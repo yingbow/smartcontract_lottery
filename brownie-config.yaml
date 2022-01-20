@@ -1,0 +1,26 @@
+dependencies:
+  - smartcontractkit/chainlink-brownie-contracts@1.1.1
+  - OpenZeppelin/openzeppelin-contracts@3.4.0
+
+compiler:
+  solc:
+    remappings:
+      - '@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1'
+      - '@openzepplin=OpenZeppelin/openzeppelin-contracts@3.4.0'
+dotenv: .env #without this line, will get "ValueError: Unable to expand environment variable in host setting: 'https://kovan.infura.io/v3/$WEB3_INFURA_PROJECT_ID' error message"
+networks:
+  default: development
+  development:
+    keyhash: '0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4'
+    fee: 100000000000000000 #0.1 Link in wei
+  kovan:
+    vrf_coordinator: '0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9'
+    eth_usd_price_feed: '0x9326BFA02ADD2366b30bacB125260Af641031331'
+    link_token: '0xa36085F69e2889c224210F603D836748e7dC0088'
+    keyhash: '0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4'
+    fee: 100000000000000000 #0.1 Link in wei
+  mainnet-fork:
+    #ETH/USD address from docs.chain.link/docs/ethereum-addresses
+    eth_usd_price_feed: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419'
+wallets:
+  from_key: ${PRIVATE_KEY}
